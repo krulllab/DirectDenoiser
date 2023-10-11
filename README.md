@@ -6,7 +6,7 @@ Code for [Direct Unsupervised Denoising](https://openaccess.thecvf.com/content/I
 This project includes code from the Hierarchical DivNoising project, which is licensed under the MIT License - [HDN project](https://github.com/juglab/HDN).
 
 
-![Inference time vs PSNR](https://github.com/krulllab/DirectDenoising/tree/main/resources/inference_time.pdf)
+![Inference time vs PSNR](https://github.com/krulllab/DirectDenoiser/blob/main/resources/inference_time.pdf)
 
 Unsupervised deep learning-based denoisers like [Hierarchical DivNoising](https://github.com/juglab/HDN) are trained to denoise images without examples of clean, noise-free images. They achieve excellent results, but are limited in application by prolonged inference times. This stems from the fact that unsupervised denoisers do not learn a direct mapping from noisy to clean, but instead learn to produce random samples from a posterior distribution over the clean images that could underlie a given noisy image. Practitioners are often interested in the mean of this distribution, which is typically estimated by averaging 100 to 1000 random samples, incurring prohibitively computation times.<br>
 In this project, we instead train an additional network to estimate this mean directly - the Direct Denoiser. This increases training time by around 1.25x (using our hardware) but reduces inference time by over 2000x by estimating the mean of the posterior distribution in a single pass. This turns hours of inference time into seconds and days into minutes.
@@ -34,4 +34,4 @@ After that, you're ready to install the dependencies for this repository:<br>
 `pip install lightning jupyterlab matplotlib tifffile scikit-learn tensorboard`
 
 ### Example notebooks
-This repository contains 3 notebooks that will first download then denoise the [C. Majalis dataset](https://ieeexplore.ieee.org/abstract/document/9098336?casa_token=ROPuswhAvi0AAAAA:BYQUOnGY51SEqy3CAe7ZTzoOpjjfq8oWrwcJF6KfF4KzIlrjpCL0mR7H7TjDV802pTiJfe0ufg).
+This repository contains 3 notebooks that will first download then denoise the [C. Majalis dataset](https://ieeexplore.ieee.org/abstract/document/9098336?casa_token=ROPuswhAvi0AAAAA:BYQUOnGY51SEqy3CAe7ZTzoOpjjfq8oWrwcJF6KfF4KzIlrjpCL0mR7H7TjDV802pTiJfe0ufg), 1-train_noise_model.ipynb, 2-train_denoisers.ipynb and 3-evaluation.ipynb.
